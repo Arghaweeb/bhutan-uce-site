@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Circular Economy for Bhutan</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1600x900/0033a0/FFFFFF?text=Bhutan+Landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .icon-bg {
+            background-color: #e0f2fe; /* sky-100 */
+        }
+        .arrow {
+            position: relative;
+            width: 100%;
+            height: 4rem; /* Adjust height as needed */
+        }
+        .arrow-body {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 100%;
+            background-color: #fb923c; /* orange-400 */
+            animation: flow 2s infinite linear;
+        }
+        .arrow-head {
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 16px solid #fb923c; /* orange-400 */
+        }
+        
+        @keyframes flow {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+
+        .arrow-body {
+             background-image: linear-gradient(to bottom, #f97316 /* orange-500 */ 50%, #fb923c /* orange-400 */ 50%);
+             background-size: 100% 20px;
+        }
+        .modal-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+        .spinner {
+            border-top-color: #3498db;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        :lang(ja) {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <!-- Bhutan Flag Inspired Logo -->
+                <div class="w-8 h-8 flex flex-wrap">
+                    <div class="w-4 h-4 bg-yellow-400"></div>
+                    <div class="w-4 h-4 bg-orange-500"></div>
+                    <div class="w-4 h-4 bg-orange-500"></div>
+                    <div class="w-4 h-4 bg-yellow-400"></div>
+                </div>
+                <h1 class="text-xl font-bold text-gray-800" data-translate-key="siteTitle">Bhutan's UCE Initiative</h1>
+                <img src="https://storage.googleapis.com/bot-config-storage-prod/2024/2/1/image_047d27.png-19503e88-ed08-4daa-be23-3431bacce794/image_047d27.png" alt="Agile Energy X Logo" class="h-10 w-auto ml-3">
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#overview" class="text-gray-600 hover:text-orange-500 transition" data-translate-key="navOverview">Overview</a>
+                <a href="#infographic" class="text-gray-600 hover:text-orange-500 transition" data-translate-key="navCycle">The Cycle</a>
+                <a href="#benefits" class="text-gray-600 hover:text-orange-500 transition" data-translate-key="navBenefits">Benefits</a>
+                <a href="#gemini-features" class="text-gray-600 hover:text-orange-500 transition" data-translate-key="navAiTools">AI Tools</a>
+                <div class="ml-4">
+                    <select id="language-switcher" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2">
+                        <option value="en" selected>English</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white">
+        <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4" data-translate-key="heroTitle">The Ultimate Circular Economy</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto" data-translate-key="heroSubtitle">A Strategic Vision for Bhutan's Energy, Food, and Economic Sovereignty.</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="overview" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="overviewTitle">Turning a Challenge into an Opportunity</h2>
+                <p class="text-gray-600 text-lg" data-translate-key="overviewText">
+                    Bhutan possesses abundant, clean hydropower. However, a seasonal paradox exists: a surplus of low-cost energy in the summer is exported, while winter shortages require expensive imports for heating. The UCE model transforms this vulnerability into a powerful engine for national growth.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infographic Section -->
+    <section id="infographic" class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16" data-translate-key="cycleTitle">The Virtuous Cycle</h2>
+            
+            <!-- Step 1: Hydropower -->
+            <div class="flex flex-col items-center">
+                <div class="card w-full md:w-1/2 lg:w-1/3 p-8 text-center">
+                    <div class="flex justify-center mb-4"><div class="w-20 h-20 rounded-full icon-bg flex items-center justify-center"><svg class="w-12 h-12 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7"></path></svg></div></div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2" data-translate-key="step1Title">1. Abundant Hydropower</h3>
+                    <p class="text-gray-600" data-translate-key="step1Text">Utilize surplus, low-cost hydropower during the summer monsoon season as the primary energy source.</p>
+                </div>
+            </div>
+
+            <div class="arrow"><div class="arrow-body"></div><div class="arrow-head"></div></div>
+
+            <!-- Step 2: Data Center -->
+            <div class="flex flex-col items-center">
+                <div class="card w-full md:w-1/2 lg:w-1/3 p-8 text-center">
+                    <div class="flex justify-center mb-4"><div class="w-20 h-20 rounded-full icon-bg flex items-center justify-center"><svg class="w-12 h-12 text-sky-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z" /></svg></div></div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2" data-translate-key="step2Title">2. The Economic Battery</h3>
+                    <p class="text-gray-600" data-translate-key="step2Text">A flexible data center (e.g., for Bitcoin mining) acts as a high-value domestic consumer, monetizing energy at global rates.</p>
+                    <div class="mt-4 bg-green-100 text-green-800 font-bold py-2 px-4 rounded-full inline-block" data-translate-key="step2Output">Output: Digital Asset Revenue</div>
+                </div>
+            </div>
+
+            <div class="relative py-8"><div class="arrow"><div class="arrow-body"></div><div class="arrow-head"></div></div><div class="absolute inset-0 flex items-center justify-center"><span class="bg-orange-500 text-white font-bold py-2 px-4 rounded-full shadow-lg z-10" data-translate-key="wasteHeat">Recycled Byproduct: Waste Heat</span></div></div>
+
+            <!-- Step 3 & 4: Split Path -->
+            <div class="flex flex-col md:flex-row justify-center items-start md:space-x-8">
+                <div class="w-full md:w-1/2 flex flex-col items-center">
+                    <div class="card w-full p-8 text-center mb-8 md:mb-0">
+                        <div class="flex justify-center mb-4"><div class="w-20 h-20 rounded-full icon-bg flex items-center justify-center"><svg class="w-12 h-12 text-sky-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15.98 8.48a3 3 0 01-1.96 4.02m-5.96-4.02a3 3 0 00-1.96 4.02" /></svg></div></div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2" data-translate-key="step3aTitle">3a. Food Sovereignty</h3>
+                        <p class="text-gray-600" data-translate-key="step3aText">Provide low-cost heat for aquaponics (like Crawfish Himalayan) and high-value greenhouses, enabling year-round food production.</p>
+                         <div class="mt-4 bg-green-100 text-green-800 font-bold py-2 px-4 rounded-full inline-block" data-translate-key="step3aOutput">Output: Fresh Produce & Seafood</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col items-center">
+                    <div class="card w-full p-8 text-center">
+                        <div class="flex justify-center mb-4"><div class="w-20 h-20 rounded-full icon-bg flex items-center justify-center"><svg class="w-12 h-12 text-sky-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg></div></div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2" data-translate-key="step3bTitle">3b. Energy Security</h3>
+                        <p class="text-gray-600" data-translate-key="step3bText">Supply clean, affordable district heating to homes and businesses, drastically reducing the need for costly winter electricity imports.</p>
+                         <div class="mt-4 bg-green-100 text-green-800 font-bold py-2 px-4 rounded-full inline-block" data-translate-key="step3bOutput">Output: Reduced Imports & GNH</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16" data-translate-key="benefitsTitle">A Trifecta of National Benefits</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Economic Benefit -->
+                <div class="text-center p-6 flex flex-col items-center">
+                    <div class="flex justify-center mb-4"><div class="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center"><svg class="w-10 h-10 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 11.21 12.77 10.5 12 10.5s-1.536.71-2.121 1.256c-1.172.879-1.172 2.303 0 3.182z" /></svg></div></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate-key="benefit1Title">Economic Sovereignty</h3>
+                    <p class="text-gray-600 mb-4" data-translate-key="benefit1Text">Creates new, high-value revenue streams, strengthens the national budget, and reduces reliance on a single export market for energy.</p>
+                    <button id="deeper-dive-economic" class="bg-sky-500 text-white font-semibold px-4 py-2 rounded-full hover:bg-sky-600 transition" data-translate-key="deeperDiveBtn">Deeper Dive ✨</button>
+                </div>
+                <!-- Food Security Benefit -->
+                <div class="text-center p-6 flex flex-col items-center">
+                    <div class="flex justify-center mb-4"><div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center"><svg class="w-10 h-10 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662v.512A48.678 48.678 0 007.5 12.512v.512c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.678 48.678 0 007.324 0 4.006 4.006 0 003.7-3.7c.092-1.21.138-2.43.138-3.662v-.512A48.678 48.678 0 0016.5 12.512v-.512z" /></svg></div></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate-key="benefit2Title">Food Security & Health</h3>
+                    <p class="text-gray-600 mb-4" data-translate-key="benefit2Text">Boosts domestic food production, reduces import dependency, and improves nutrition and health outcomes for all Bhutanese.</p>
+                    <button id="deeper-dive-food" class="bg-sky-500 text-white font-semibold px-4 py-2 rounded-full hover:bg-sky-600 transition" data-translate-key="deeperDiveBtn2">Deeper Dive ✨</button>
+                </div>
+                <!-- Energy Security Benefit -->
+                <div class="text-center p-6 flex flex-col items-center">
+                    <div class="flex justify-center mb-4"><div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center"><svg class="w-10 h-10 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg></div></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2" data-translate-key="benefit3Title">Energy Resilience</h3>
+                    <p class="text-gray-600 mb-4" data-translate-key="benefit3Text">Strengthens the national grid, reduces costly winter energy imports, and provides a clean, modern heating solution for communities.</p>
+                    <button id="deeper-dive-energy" class="bg-sky-500 text-white font-semibold px-4 py-2 rounded-full hover:bg-sky-600 transition" data-translate-key="deeperDiveBtn3">Deeper Dive ✨</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gemini Features Section -->
+    <section id="gemini-features" class="py-16 md:py-24">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-translate-key="aiTitle">Take the Next Step with AI</h2>
+            <p class="text-gray-600 text-lg max-w-2xl mx-auto mb-8" data-translate-key="aiText">
+                Use the power of Gemini to generate a professional proposal based on the UCE concept. Instantly create a draft to share with stakeholders and accelerate this vision into reality.
+            </p>
+            <button id="generate-proposal" class="bg-orange-500 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-orange-600 transition-transform transform hover:scale-105" data-translate-key="generateProposalBtn">
+                Generate Proposal Draft ✨
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p data-translate-key="footerLine1">&copy; 2025 Druk Holding and Investments. A Strategic Proposal for National Resilience.</p>
+            <p class="text-sm text-gray-400 mt-2" data-translate-key="footerLine2">This webpage is a conceptual representation based on the UCE framework. AI-powered features by Gemini.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="gemini-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 z-50 items-center justify-center p-4 modal-overlay opacity-0">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col modal-content scale-95">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 id="modal-title" class="text-xl font-bold text-gray-800"></h3>
+                <button id="modal-close" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
+            </div>
+            <!-- Modal Body -->
+            <div id="modal-body" class="p-6 overflow-y-auto">
+                <!-- Loading Spinner -->
+                <div id="modal-loader" class="flex flex-col items-center justify-center h-64">
+                    <div class="spinner w-12 h-12 rounded-full border-4 border-gray-200"></div>
+                    <p id="modal-loader-text" class="mt-4 text-gray-600" data-translate-key="modalLoading">Generating insights with Gemini...</p>
+                </div>
+                <!-- Content -->
+                <div id="modal-content-area" class="prose max-w-none text-gray-700"></div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="flex justify-end items-center p-4 border-t bg-gray-50 rounded-b-lg">
+                <button id="modal-copy" class="hidden bg-green-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-600 transition flex items-center space-x-2">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.353-.026.692-.026 1.038 0 1.13.094 1.976 1.057 1.976 2.192V7.5m-9 7.5h12.75a1.5 1.5 0 001.5-1.5v-6a1.5 1.5 0 00-1.5-1.5H6.75a1.5 1.5 0 00-1.5 1.5v6a1.5 1.5 0 001.5 1.5z" /></svg>
+                    <span data-translate-key="copyBtn">Copy to Clipboard</span>
+                </button>
+                 <span id="copy-success" class="hidden text-green-600 font-semibold" data-translate-key="copySuccess">Copied!</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const translations = {
+                en: {
+                    siteTitle: "Bhutan's UCE Initiative",
+                    navOverview: "Overview",
+                    navCycle: "The Cycle",
+                    navBenefits: "Benefits",
+                    navAiTools: "AI Tools",
+                    heroTitle: "The Ultimate Circular Economy",
+                    heroSubtitle: "A Strategic Vision for Bhutan's Energy, Food, and Economic Sovereignty.",
+                    overviewTitle: "Turning a Challenge into an Opportunity",
+                    overviewText: "Bhutan possesses abundant, clean hydropower. However, a seasonal paradox exists: a surplus of low-cost energy in the summer is exported, while winter shortages require expensive imports for heating. The UCE model transforms this vulnerability into a powerful engine for national growth.",
+                    cycleTitle: "The Virtuous Cycle",
+                    step1Title: "1. Abundant Hydropower",
+                    step1Text: "Utilize surplus, low-cost hydropower during the summer monsoon season as the primary energy source.",
+                    step2Title: "2. The Economic Battery",
+                    step2Text: "A flexible data center (e.g., for Bitcoin mining) acts as a high-value domestic consumer, monetizing energy at global rates.",
+                    step2Output: "Output: Digital Asset Revenue",
+                    wasteHeat: "Recycled Byproduct: Waste Heat",
+                    step3aTitle: "3a. Food Sovereignty",
+                    step3aText: "Provide low-cost heat for aquaponics (like Crawfish Himalayan) and high-value greenhouses, enabling year-round food production.",
+                    step3aOutput: "Output: Fresh Produce & Seafood",
+                    step3bTitle: "3b. Energy Security",
+                    step3bText: "Supply clean, affordable district heating to homes and businesses, drastically reducing the need for costly winter electricity imports.",
+                    step3bOutput: "Output: Reduced Imports & GNH",
+                    benefitsTitle: "A Trifecta of National Benefits",
+                    benefit1Title: "Economic Sovereignty",
+                    benefit1Text: "Creates new, high-value revenue streams, strengthens the national budget, and reduces reliance on a single export market for energy.",
+                    deeperDiveBtn: "Deeper Dive ✨",
+                    deeperDiveBtn2: "Deeper Dive ✨",
+                    deeperDiveBtn3: "Deeper Dive ✨",
+                    benefit2Title: "Food Security & Health",
+                    benefit2Text: "Boosts domestic food production, reduces import dependency, and improves nutrition and health outcomes for all Bhutanese.",
+                    benefit3Title: "Energy Resilience",
+                    benefit3Text: "Strengthens the national grid, reduces costly winter energy imports, and provides a clean, modern heating solution for communities.",
+                    aiTitle: "Take the Next Step with AI",
+                    aiText: "Use the power of Gemini to generate a professional proposal based on the UCE concept. Instantly create a draft to share with stakeholders and accelerate this vision into reality.",
+                    generateProposalBtn: "Generate Proposal Draft ✨",
+                    footerLine1: "© 2025 Druk Holding and Investments. A Strategic Proposal for National Resilience.",
+                    footerLine2: "This webpage is a conceptual representation based on the UCE framework. AI-powered features by Gemini.",
+                    modalLoading: "Generating insights with Gemini...",
+                    copyBtn: "Copy to Clipboard",
+                    copySuccess: "Copied!",
+                    modalTitleEconomic: "Deeper Dive: Economic Sovereignty & GNH",
+                    modalTitleFood: "Deeper Dive: Food Security & GNH",
+                    modalTitleEnergy: "Deeper Dive: Energy Resilience & GNH",
+                    modalTitleProposal: "Generated Proposal Draft"
+                },
+                ja: {
+                    siteTitle: "ブータンのUCEイニシアチブ",
+                    navOverview: "概要",
+                    navCycle: "循環",
+                    navBenefits: "利点",
+                    navAiTools: "AIツール",
+                    heroTitle: "究極の循環経済",
+                    heroSubtitle: "ブータンのエネルギー、食料、経済主権のための戦略的ビジョン。",
+                    overviewTitle: "課題を機会に変える",
+                    overviewText: "ブータンは豊富でクリーンな水力発電を保有しています。しかし、季節的なパラドックスが存在します。夏には余剰の低コストエネルギーが輸出され、冬には暖房のために高価な輸入が必要となります。UCEモデルは、この脆弱性を国家成長の強力なエンジンに変えます。",
+                    cycleTitle: "好循環",
+                    step1Title: "1. 豊富な水力発電",
+                    step1Text: "夏のモンスーン期に余剰となる低コストの水力発電を主要なエネルギー源として活用します。",
+                    step2Title: "2. 経済のバッテリー",
+                    step2Text: "柔軟なデータセンター（例：ビットコインマイニング用）が、高価値の国内消費者として機能し、エネルギーを世界的なレートで収益化します。",
+                    step2Output: "成果：デジタル資産収入",
+                    wasteHeat: "リサイクル副産物：廃熱",
+                    step3aTitle: "3a. 食料主権",
+                    step3aText: "アクアポニックス（クロウフィッシュ・ヒマラヤンなど）や高価値の温室に低コストの熱を供給し、年間を通じた食料生産を可能にします。",
+                    step3aOutput: "成果：新鮮な農産物とシーフード",
+                    step3bTitle: "3b. エネルギー安全保障",
+                    step3bText: "家庭や企業にクリーンで手頃な地域暖房を供給し、高価な冬の電力輸入の必要性を大幅に削減します。",
+                    step3bOutput: "成果：輸入削減とGNH向上",
+                    benefitsTitle: "国家にもたらす三つの利点",
+                    benefit1Title: "経済主権",
+                    benefit1Text: "新たな高価値の収益源を創出し、国家予算を強化し、エネルギーの単一輸出市場への依存を減らします。",
+                    deeperDiveBtn: "深掘り分析 ✨",
+                    deeperDiveBtn2: "深掘り分析 ✨",
+                    deeperDiveBtn3: "深掘り分析 ✨",
+                    benefit2Title: "食料安全保障と健康",
+                    benefit2Text: "国内の食料生産を促進し、輸入依存を減らし、すべてのブータン国民の栄養と健康状態を改善します。",
+                    benefit3Title: "エネルギーレジリエンス",
+                    benefit3Text: "国の送電網を強化し、高価な冬のエネルギー輸入を削減し、コミュニティにクリーンで現代的な暖房ソリューションを提供します。",
+                    aiTitle: "AIで次の一歩へ",
+                    aiText: "Geminiの力を利用して、UCEコンセプトに基づいた専門的な提案書を生成します。関係者と共有するための草案を即座に作成し、このビジョンを現実のものへと加速させます。",
+                    generateProposalBtn: "提案書の草案を生成 ✨",
+                    footerLine1: "© 2025 ドゥルク・ホールディング・アンド・インベストメンツ。国家レジリエンスのための戦略的提案。",
+                    footerLine2: "このウェブページはUCEフレームワークに基づく概念的な表現です。GeminiによるAI搭載機能。",
+                    modalLoading: "Geminiで洞察を生成中...",
+                    copyBtn: "クリップボードにコピー",
+                    copySuccess: "コピーしました！",
+                    modalTitleEconomic: "深掘り分析：経済主権とGNH",
+                    modalTitleFood: "深掘り分析：食料安全保障とGNH",
+                    modalTitleEnergy: "深掘り分析：エネルギーレジリエンスとGNH",
+                    modalTitleProposal: "生成された提案書の草案"
+                }
+            };
+
+            const languageSwitcher = document.getElementById('language-switcher');
+            
+            function switchLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.getAttribute('data-translate-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+            }
+
+            languageSwitcher.addEventListener('change', (event) => {
+                switchLanguage(event.target.value);
+            });
+
+
+            // --- Element Selection ---
+            const modal = document.getElementById('gemini-modal');
+            const modalCloseBtn = document.getElementById('modal-close');
+            const modalTitle = document.getElementById('modal-title');
+            const modalLoader = document.getElementById('modal-loader');
+            const modalContentArea = document.getElementById('modal-content-area');
+            const modalCopyBtn = document.getElementById('modal-copy');
+            const copySuccessMsg = document.getElementById('copy-success');
+
+            const deeperDiveEconomicBtn = document.getElementById('deeper-dive-economic');
+            const deeperDiveFoodBtn = document.getElementById('deeper-dive-food');
+            const deeperDiveEnergyBtn = document.getElementById('deeper-dive-energy');
+            const generateProposalBtn = document.getElementById('generate-proposal');
+
+            // --- Guard Clause ---
+            if (!modal || !modalCloseBtn || !deeperDiveEconomicBtn || !deeperDiveFoodBtn || !deeperDiveEnergyBtn || !generateProposalBtn) {
+                console.error("One or more interactive elements are missing from the DOM. AI features will be disabled.");
+                return;
+            }
+
+            // --- Prompts for Gemini API ---
+            const prompts = {
+                economic: "In the context of Bhutan's Ultimate Circular Economy, explain in detail how achieving 'Economic Sovereignty' would positively impact Bhutan's Gross National Happiness. Go beyond simple revenue and discuss how diversifying the economy away from just hydropower exports and creating new tech-adjacent industries could enhance GNH domains like 'Living Standards', 'Good Governance', and 'Psychological Wellbeing'. Format the response in Markdown.",
+                food: "In the context of Bhutan's Ultimate Circular Economy, explain in detail how achieving 'Food Security & Health' through waste-heat-powered aquaponics would positively impact Bhutan's Gross National Happiness. Focus on GNH domains like 'Health' (improved nutrition), 'Community Vitality' (local food systems), and 'Ecological Diversity and Resilience' (sustainable agriculture). Format the response in Markdown.",
+                energy: "In the context of Bhutan's Ultimate Circular Economy, explain in detail how achieving 'Energy Resilience' through district heating would positively impact Bhutan's Gross National Happiness. Discuss the impact on GNH domains like 'Living Standards' (reduced energy costs for households), 'Health' (better indoor air quality compared to inefficient heaters), and 'Psychological Wellbeing' (sense of security and self-reliance). Format the response in Markdown.",
+                proposal: `You are a policy advisor writing a formal proposal to a senior government stakeholder in Bhutan (e.g., the CEO of Druk Holding and Investments). Draft a concise and persuasive email outlining the 'Ultimate Circular Economy' (UCE) concept for Bhutan.
+
+The email should cover these key points:
+1.  **The Challenge:** Briefly mention Bhutan's energy paradox (summer surplus exported cheaply, winter deficit imported expensively).
+2.  **The Solution (UCE):**
+    * Start with abundant summer hydropower.
+    * Power a flexible data center (like for Bitcoin mining) to act as an 'economic battery', converting energy into high-value digital assets.
+    * Crucially, capture the waste heat from the data center.
+    * Use this 'free' thermal energy for two key sectors:
+        a. **Food Sovereignty:** Heating for aquaponics (mentioning Crawfish Himalayan as an example) and greenhouses to produce fresh food year-round, reducing imports.
+        b. **Energy Security:** Creating district heating systems to provide affordable warmth to homes, reducing the need for expensive winter electricity imports.
+3.  **The Benefits:** Summarize the trifecta of benefits: Economic Sovereignty, Food Security, and Energy Resilience.
+4.  **Call to Action:** Suggest a follow-up meeting to discuss a pilot project.
+
+The tone should be professional, respectful, and visionary, aligning with Bhutan's philosophy of Gross National Happiness. Format the response as a simple text email.`
+            };
+
+            // --- Modal Logic ---
+            const showModal = () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    const content = modal.querySelector('.modal-content');
+                    if (content) content.classList.remove('scale-95');
+                }, 10);
+            };
+
+            const closeModal = () => {
+                modal.classList.add('opacity-0');
+                const content = modal.querySelector('.modal-content');
+                if (content) content.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            };
+
+            // --- Gemini API Call ---
+            async function callGemini(prompt, titleKey) {
+                const currentLang = document.documentElement.lang || 'en';
+                const title = translations[currentLang][titleKey];
+
+                showModal();
+                modalTitle.textContent = title;
+                modalLoader.style.display = 'flex';
+                modalContentArea.style.display = 'none';
+                modalCopyBtn.classList.add('hidden');
+                copySuccessMsg.classList.add('hidden');
+
+                try {
+                    let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // API key will be injected
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`API request failed with status ${response.status}`);
+
+                    const result = await response.json();
+                    
+                    let text = "Sorry, I couldn't generate a response. Please try again.";
+                    if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                        text = result.candidates[0].content.parts[0].text;
+                    }
+
+                    let htmlContent = text
+                        .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>')
+                        .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold mt-6 mb-3">$1</h2>')
+                        .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-extrabold mt-8 mb-4">$1</h1>')
+                        .replace(/\*\*(.*)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\*(.*)\*/g, '<em>$1</em>')
+                        .replace(/(\r\n|\n|\r)/gm, '<br>');
+
+                    modalContentArea.innerHTML = htmlContent;
+                    modalLoader.style.display = 'none';
+                    modalContentArea.style.display = 'block';
+                    if (titleKey === 'modalTitleProposal') {
+                        modalCopyBtn.classList.remove('hidden');
+                    }
+
+                } catch (error) {
+                    console.error("Gemini API call failed:", error);
+                    modalContentArea.innerHTML = `<p class="text-red-500">An error occurred while fetching data. Please check the console and try again.</p><p class="text-sm text-gray-500 mt-2">${error.message}</p>`;
+                    modalLoader.style.display = 'none';
+                    modalContentArea.style.display = 'block';
+                }
+            }
+            
+            // --- Event Listeners ---
+            modalCloseBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            
+            modalCopyBtn.addEventListener('click', () => {
+                const textToCopy = modalContentArea.innerText;
+                const textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    modalCopyBtn.classList.add('hidden');
+                    copySuccessMsg.classList.remove('hidden');
+                    setTimeout(() => {
+                         copySuccessMsg.classList.add('hidden');
+                         modalCopyBtn.classList.remove('hidden');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+                document.body.removeChild(textArea);
+            });
+
+            deeperDiveEconomicBtn.addEventListener('click', () => callGemini(prompts.economic, 'modalTitleEconomic'));
+            deeperDiveFoodBtn.addEventListener('click', () => callGemini(prompts.food, 'modalTitleFood'));
+            deeperDiveEnergyBtn.addEventListener('click', () => callGemini(prompts.energy, 'modalTitleEnergy'));
+            generateProposalBtn.addEventListener('click', () => callGemini(prompts.proposal, 'modalTitleProposal'));
+        });
+    </script>
+</body>
+</html>
